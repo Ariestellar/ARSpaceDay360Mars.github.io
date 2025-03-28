@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Марс</title>
+		<title>Mars</title>
 		<style>
       body { margin: 0; overflow: hidden; }
       #backButton {
@@ -38,22 +38,30 @@
     <div id="fade"></div>
     <button id="backButton">Вернуться</button>
     
-     <!-- Добавление аудио -->
      <audio id="spaceAudio" loop autoplay>
-      <source src="./assets/mars-sound-GkbeWtSc.mp3" type="audio/mp3">
+      <source src="./assets/space-sound.mp3" type="audio/mp3">
       Ваш браузер не поддерживает элемент audio.
     </audio>    
 
     <script>
       let fade = document.getElementById('fade');
       let backButton = document.getElementById("backButton");
-      let spaceAudio = document.getElementById("spaceAudio");
 
-      spaceAudio.volume = 0.2;
-      spaceAudio.play();
       backButton.addEventListener("click", () => {
           fade.style.opacity = 1;
           setTimeout(() => {window.location.href = 'https://ariestellar.github.io/ARSpaceDay360.github.io';}, 1000);
+      });
+
+      document.addEventListener("click", () => {
+        let spaceAudio = document.getElementById("spaceAudio");
+        spaceAudio.volume = 0.2;
+        spaceAudio.play();
+      }, { once: true });
+
+      window.addEventListener("load", () => {
+        setTimeout(() => { fade.style.opacity = 1;
+            setTimeout(() => { fade.style.opacity = 0; }, 100);
+        }, 1000);
       });
   </script>
 	</body>
